@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
     "target": "es5",
-    "module": "esnext",
+    "module": "es6",
     "strict": true,
+    "noImplicitAny": true,
     "jsx": "preserve",
+    "allowJs": true,
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -21,7 +24,7 @@
       ]
     },
     "lib": [
-      "esnext",
+      "es6",
       "dom",
       "dom.iterable",
       "scripthost"
