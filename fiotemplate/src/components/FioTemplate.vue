@@ -1,26 +1,25 @@
 <template>
-  <div class="fio-template">
+  <div class="fio">
     <p>{{lastName}} {{firstName}} {{middleName}}, {{group}}</p>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { defineComponent } from 'vue';
 
-@Component
-export default class FioTemplate extends Vue {
-  @Prop() private lastName!: string;
-
-  @Prop() private firstName!: string;
-
-  @Prop() private middleName!: string;
-
-  @Prop() private group!: string;
-}
+export default defineComponent({
+  name: 'FioTemplate',
+  props: {
+    lastName: String,
+    firstName: String,
+    middleName: String,
+    group: String,
+  },
+});
 </script>
 
-<style scoped>
-  .fio-template{
+<style>
+  .fio{
     text-align: center;
   }
 </style>

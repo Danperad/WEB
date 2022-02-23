@@ -1,18 +1,16 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
     "target": "es5",
-    "module": "es6",
+    "module": "esnext",
     "strict": true,
-    "noImplicitAny": true,
     "jsx": "preserve",
-    "allowJs": true,
     "importHelpers": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
@@ -24,7 +22,7 @@
       ]
     },
     "lib": [
-      "es6",
+      "esnext",
       "dom",
       "dom.iterable",
       "scripthost"

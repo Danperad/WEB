@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <Vyatsu></Vyatsu>
     <FioTemplate last-name="Кокорин" first-name="Егор" middle-name="Дмитриевич"
                  group="ИТб-2301"></FioTemplate>
@@ -7,16 +7,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import Vyatsu from '@/components/Vyatsu.vue';
+import { defineComponent } from 'vue';
+import Vyatsu from '../../vyatsu/src/main';
 import FioTemplate from '../../fiotemplate/src/main';
 
-@Component({
+export default defineComponent({
+  name: 'App',
   components: {
     Vyatsu,
     FioTemplate,
   },
-})
-export default class App extends Vue {
-}
+});
 </script>

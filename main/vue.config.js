@@ -1,5 +1,5 @@
 module.exports = {
   devServer: {
-    proxy: 'https://new.vyatsu.ru/'
-  }
-}
+    proxy: 'https://new.vyatsu.ru/',
+  },
+};
