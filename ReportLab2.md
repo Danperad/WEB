@@ -176,7 +176,9 @@ __________
 ```
 
 <p align = center>3
+
 __________
+
 ```css
 .big-img {
   height: 300px;
@@ -228,7 +230,9 @@ __________
   position: relative;
 }
 ```
+
 <p align = center>4
+
 __________
 ```css
 .password-control {
