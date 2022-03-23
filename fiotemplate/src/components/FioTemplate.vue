@@ -18,7 +18,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
   .fio{
     text-align: center;
   }

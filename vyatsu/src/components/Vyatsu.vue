@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 import axios from "axios";
 
-const url = 'http://localhost:8080/admission/';
+const url = 'http://127.0.0.1:8080/admission/';
 
 export default defineComponent({
   name: 'Vyatsu',

@@ -1,15 +1,11 @@
 <template>
-  <div class="container">
-    <div>
-      <img v-if="width > 600" src="../assets/big_login.jpg" alt="#" class="big-img">
-      <img v-else src="../assets/small_login.jpg" alt="#" class="small-img">
-    </div>
+  <div>
     <div class="login-text">
       <h1>Авторизация</h1>
       <div v-if="width > 600">
         <div>
           <p>Логин</p>
-          <input type="text">
+          <input type="text" id="login-desktop">
         </div>
         <div>
           <p>Пароль</p>
@@ -21,7 +17,7 @@
         </div>
       </div>
       <div v-else class="mobile-login">
-        <input type="text" placeholder="Логин">
+        <input type="text" placeholder="Логин" id="login-mobile">
         <div class="password">
           <input type="password" id="pass-mobile" placeholder="Пароль">
           <button v-on:click="changePassVis" id="password-mobile"
@@ -29,7 +25,7 @@
         </div>
       </div>
       <div>
-        <input type="button" value="Войти" class="login-btn">
+        <input type="button" value="Войти" class="login-btn" v-on:click="check">
       </div>
     </div>
   </div>
@@ -37,6 +33,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'Login',
@@ -69,6 +66,32 @@ export default defineComponent({
         pass.type = "text";
         btn.style.background = "url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat";
       }
+    },
+    check() {
+      let login: HTMLInputElement;
+      let pass: HTMLInputElement;
+      if (this.width > 600) {
+        login = document.getElementById("login-desktop") as HTMLInputElement;
+        pass = document.getElementById("pass-desktop") as HTMLInputElement;
+      } else {
+        login = document.getElementById("login-mobile") as HTMLInputElement;
+        pass = document.getElementById("pass-mobile") as HTMLInputElement;
+      }
+      const data = {
+        "login": login.value,
+        "password": pass.value
+      };
+      const url = 'https://203bdd99-4e82-47ae-ba4d-f0f74918bf95.mock.pstmn.io/auth/check'
+      axios.post(url, data, {headers: {'Content-Type': 'application/json'}})
+        .then(
+          (res: any) => {
+            console.log(res.data)
+          },
+        ).catch(
+          (err: any) => {
+            console.log(err)
+          },
+      );
     }
   },
   created() {
@@ -81,30 +104,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
-.small-img {
-  height: 150px;
-  margin: 0 auto;
-  display: block;
-}
-
-.big-img {
-  height: 300px;
-  margin-right: 30px;
-}
-
-.container {
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-}
-
-@media (max-width: 600px) {
-  .container {
-    display: block;
-  }
-}
+<style scoped>
 
 .login-btn {
   margin-top: 5px;
@@ -129,7 +129,7 @@ export default defineComponent({
   margin-bottom: 5px;
 }
 
-.login-text input[type="text"], input[type="password"] {
+.login-text input[type="text"], .login-text input[type="password"] {
   border-radius: 5px;
   border-width: thin;
   font-size: medium;

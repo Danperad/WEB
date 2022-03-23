@@ -1,3 +1,3 @@
-import Login from './components/Login.vue';
+import MainLogin from './components/MainLogin.vue';
 
-export default Login;
+export default MainLogin;
