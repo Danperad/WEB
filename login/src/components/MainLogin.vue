@@ -5,7 +5,8 @@
       <img v-else src="../assets/small_login.jpg" alt="#" class="small-img">
     </div>
     <div>
-      <input type="button" v-on:click="changeLogin" value="Авторизация" id="change-login-btn">
+      <input type="button" v-on:click="changeLogin" value="Авторизация" id="change-login-btn"
+             class="changeLoginBTN">
       <Login v-if="login"></Login>
       <Registration v-if="!login"></Registration>
     </div>
@@ -13,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 
 import Login from './Login.vue';
 import Registration from './Registration.vue';
@@ -37,7 +38,7 @@ export default defineComponent({
     changeLogin() {
       const btn = document.getElementById("change-login-btn") as HTMLInputElement;
       this.login = !this.login;
-      if (this.login){
+      if (this.login) {
         btn.value = "Регистрация";
       } else {
         btn.value = "Авторизация";
@@ -62,7 +63,7 @@ export default defineComponent({
 }
 
 .big-img {
-  height: 300px;
+  height: 450px;
   margin-right: 30px;
 }
 
@@ -73,9 +74,25 @@ export default defineComponent({
   justify-content: center;
 }
 
+.changeLoginBTN {
+  margin: 10px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 7px 23px;
+  border-radius: 15px;
+  border-width: thin;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  background-color: navy;
+}
+
 @media (max-width: 600px) {
   .container {
     display: block;
+  }
+  .changeLoginBTN{
+    margin: 20px auto 0 auto;
   }
 }
 </style>

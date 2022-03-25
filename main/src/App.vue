@@ -2,7 +2,7 @@
   <div>
     <FioTemplate last-name="Кокорин" first-name="Егор" middle-name="Дмитриевич"
                  group="ИТб-2301"></FioTemplate>
-    <Vyatsu hidden></Vyatsu>
+    <Vyatsu></Vyatsu>
     <MainLogin></MainLogin>
   </div>
 </template>
@@ -15,11 +15,6 @@ import MainLogin from '../../login/src/main';
 
 export default defineComponent({
   name: 'App',
-  data() {
-    return {
-      yes: false,
-    };
-  },
   components: {
     FioTemplate,
     Vyatsu,

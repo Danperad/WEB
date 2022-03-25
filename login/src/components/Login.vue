@@ -1,32 +1,19 @@
 <template>
-  <div>
-    <div class="login-text">
-      <h1>Авторизация</h1>
-      <div v-if="width > 600">
-        <div>
-          <p>Логин</p>
-          <input type="text" id="login-desktop">
-        </div>
-        <div>
-          <p>Пароль</p>
-          <div class="password">
-            <input type="password" id="pass-desktop">
-            <button v-on:click="changePassVis" id="password-desktop"
-                    class="password-control"></button>
-          </div>
-        </div>
+  <div class="login-text">
+    <h1>Авторизация</h1>
+    <div class="login-div">
+      <p v-if="!isMobile">Логин</p>
+      <input type="text" id="login" v-model="data.login">
+
+      <p v-if="!isMobile">Пароль</p>
+      <div class="password">
+        <input type="password" id="pass" v-model="data.pass">
+        <button v-on:click="changePassVis" id="password"
+                class="password-control"></button>
       </div>
-      <div v-else class="mobile-login">
-        <input type="text" placeholder="Логин" id="login-mobile">
-        <div class="password">
-          <input type="password" id="pass-mobile" placeholder="Пароль">
-          <button v-on:click="changePassVis" id="password-mobile"
-                  class="password-control"></button>
-        </div>
-      </div>
-      <div>
-        <input type="button" value="Войти" class="login-btn" v-on:click="check">
-      </div>
+    </div>
+    <div>
+      <input type="button" value="Войти" class="login-btn" v-on:click="check">
     </div>
   </div>
 </template>
@@ -39,26 +26,32 @@ export default defineComponent({
   name: 'Login',
   data() {
     return {
+      isMobile: false,
       width: 0,
-      hide: false,
+      hide: true,
+      data: {}
     };
   },
   methods: {
     updateWidth() {
       this.width = window.innerWidth;
-      this.changePassVis();
+      this.isMobile = this.width <= 600;
+      const login = document.getElementById("login") as HTMLInputElement;
+      const pass = document.getElementById("pass") as HTMLInputElement;
+      if (this.isMobile) {
+        login.placeholder = "Логин";
+        pass.placeholder = "Пароль";
+      } else {
+        login.placeholder = "";
+        pass.placeholder = "";
+      }
     },
     changePassVis() {
       this.hide = !this.hide;
       let pass: HTMLInputElement;
       let btn: HTMLButtonElement;
-      if (this.width > 600) {
-        pass = document.getElementById("pass-desktop") as HTMLInputElement;
-        btn = document.getElementById("password-desktop") as HTMLButtonElement;
-      } else {
-        pass = document.getElementById("pass-mobile") as HTMLInputElement;
-        btn = document.getElementById("password-mobile") as HTMLButtonElement;
-      }
+      pass = document.getElementById("pass") as HTMLInputElement;
+      btn = document.getElementById("password") as HTMLButtonElement;
       if (this.hide) {
         pass.type = "password";
         btn.style.background = "url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat";
@@ -68,35 +61,29 @@ export default defineComponent({
       }
     },
     check() {
-      let login: HTMLInputElement;
-      let pass: HTMLInputElement;
-      if (this.width > 600) {
-        login = document.getElementById("login-desktop") as HTMLInputElement;
-        pass = document.getElementById("pass-desktop") as HTMLInputElement;
-      } else {
-        login = document.getElementById("login-mobile") as HTMLInputElement;
-        pass = document.getElementById("pass-mobile") as HTMLInputElement;
-      }
-      const data = {
-        "login": login.value,
-        "password": pass.value
+      const headers = {
+          'Content-Type': 'application/json',
+          'x-mock-match-request-body': 'true'
       };
-      const url = 'https://203bdd99-4e82-47ae-ba4d-f0f74918bf95.mock.pstmn.io/auth/check'
-      axios.post(url, data, {headers: {'Content-Type': 'application/json'}})
+      const url = 'https://c3d2fd9a-8164-40fd-bbeb-aa7519fbf314.mock.pstmn.io/auth/signin';
+      axios.post(url, this.data, {headers})
         .then(
           (res: any) => {
-            console.log(res.data)
+            alert("Авторизация прошла успешно");
           },
         ).catch(
-          (err: any) => {
-            console.log(err)
-          },
+        (err: any) => {
+          alert("Неверный логин или пароль");
+        },
       );
     }
   },
   created() {
     this.width = window.innerWidth;
     window.addEventListener('resize', this.updateWidth);
+  },
+  mounted() {
+    this.updateWidth();
   },
   unmounted() {
     window.removeEventListener('resize', this.updateWidth)
@@ -136,7 +123,7 @@ export default defineComponent({
   padding: 3px 7px;
 }
 
-.mobile-login input {
+.login-div input {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -148,18 +135,12 @@ export default defineComponent({
 
 .password-control {
   position: absolute;
-  top: 3px;
+  top: 8px;
   right: 6px;
   display: inline-block;
   width: 20px;
   height: 20px;
   background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
   border: 0;
-}
-
-@media (max-width: 600px) {
-  .password-control {
-    top: 8px;
-  }
 }
 </style>
