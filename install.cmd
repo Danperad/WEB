@@ -1,1 +1,1 @@
-cd .\fiotemplate & npm i & npm link & cd ..\vyatsu & npm i & npm link & cd ..\login & npm i & npm link & cd ..\main & npm i & npm link fiotemplate & npm link vyatsu & npm link login & cd ..\
+cd .\fiotemplate & npm i & npm link & cd ..\vyatsu & npm i & npm link & cd ..\login & npm i & npm link & cd ..\dashboard & npm i & npm link & cd ..\main & npm i & npm link fiotemplate & npm link vyatsu & npm link login & npm link dashboard & cd ..\
