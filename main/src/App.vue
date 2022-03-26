@@ -1,10 +1,11 @@
 <template>
   <div>
     <FioTemplate last-name="Кокорин" first-name="Егор" middle-name="Дмитриевич"
-                 group="ИТб-2301" hidden></FioTemplate>
+                 group="ИТб-2301"></FioTemplate>
     <Vyatsu hidden></Vyatsu>
     <MainLogin hidden></MainLogin>
-    <Dashboard></Dashboard>
+    <Dashboard hidden></Dashboard>
+    <Table></Table>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import FioTemplate from '../../fiotemplate/src/main';
 import Vyatsu from '../../vyatsu/src/main';
 import MainLogin from '../../login/src/main';
 import Dashboard from '../../dashboard/src/main';
+import Table from '../../table/src/main';
 
 export default defineComponent({
   name: 'App',
@@ -21,7 +23,8 @@ export default defineComponent({
     FioTemplate,
     Vyatsu,
     MainLogin,
-    Dashboard
+    Dashboard,
+    Table,
   },
 });
 </script>
