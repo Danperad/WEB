@@ -8,8 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="GraphQL" Version="4.7.1" />
-        <PackageReference Include="GraphQL.SystemTextJson" Version="4.7.1" />
         <PackageReference Include="RestPanda" Version="1.2.0" />
     </ItemGroup>
 

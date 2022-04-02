@@ -4,7 +4,7 @@ namespace WebServer.Entity;
 
 public class User
 {
-    public static List<User> Users { get; } = new(new[] {new User("0000", "0000")});
+    public static List<User> Users { get; } = new(new[] {new User("000000", "0000")});
 
     public string login { get; set; }
     public string pass { get; set; }

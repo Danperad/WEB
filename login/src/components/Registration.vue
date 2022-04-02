@@ -10,7 +10,7 @@
 
       <p v-if="!isMobile">Пароль</p>
       <div class="password">
-        <input type="password" id="reg-pass" v-model="data.pass">
+        <input type="password" id="reg-pass">
         <button v-on:click="changePassVis" id="password"
                 class="password-control"></button>
       </div>
@@ -100,11 +100,13 @@ export default defineComponent({
       axios.post(url, this.data, {headers})
         .then(
           (res: any) => {
-            alert("Регистрация прошла успешно");
+            if (res.data.IsValid) alert("Регистрация прошла успешно");
+            else alert("Данный логин уже занят");
+
           },
         ).catch(
         (err: any) => {
-          alert("Данный логин уже занят");
+          alert("Сервер не доступен");
         },
       );
     }
