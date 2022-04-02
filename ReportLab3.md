@@ -75,11 +75,11 @@
 
 В компонент Registration была добавлена адаптивная верстка блока регистрации. Результут представлен на рисунке 1 и 2.
 
-<p align=center><img src="./Img/Lab3PC.png" alt="desktop"></p>
+<p align=center><img src="Img/Lab3/Lab3PC.png" alt="desktop"></p>
 
 <p align = center>Рисунок 1 – Регистрация desktop
 
-<p align=center><img src="./Img/Lab3Mobile.png" alt="mobil"></p>
+<p align=center><img src="Img/Lab3/Lab3Mobile.png" alt="mobil"></p>
 
 <p align = center>Рисунок 2 – Регистрация для мобильных устройств
 
@@ -87,36 +87,36 @@
 
 В ходе выполнения работы с помощью Postman был создан Mock Server. Созданный Mock Server представлен на рисунке 3.
 
-<p align=center><img src="./Img/Lab3Mock.png" alt="Mock Server"></p>
+<p align=center><img src="Img/Lab3/Lab3Mock.png" alt="Mock Server"></p>
 
 <p align = center>Рисунок 3 – Mock Server
 
 В рамках лабораторной работы были созданы два Post запроса.
 В первом случае Post запрос используется для проверки введенного логина и пароля. Реализация запроса изображена на рисунке 4. Результаты его работы показаны на рисунках 5 и 6.
 
-<p align=center><img src="./Img/Lab3PostmanSign.png" alt="Postman Sign"></p>
+<p align=center><img src="Img/Lab3/Lab3PostmanSign.png" alt="Postman Sign"></p>
 
 <p align = center>Рисунок 4 – Post запрос
 
-<p align=center><img src="./Img/Lab3Sign.png" alt="successfulEnter"></p>
+<p align=center><img src="Img/Lab3/Lab3Sign.png" alt="successfulEnter"></p>
 
 <p align = center>Рисунок 5 – Удачный вход
 
-<p align=center><img src="./Img/Lab3NotSign.png" alt="unsuccessfulEnter"></p>
+<p align=center><img src="Img/Lab3/Lab3NotSign.png" alt="unsuccessfulEnter"></p>
 
 <p align = center>Рисунок 6 – Неудачный вход
 
 Во втором случае Post запрос используется для проверки уникальности логина при регистрации. Реализация запроса изображена на рисунке 7. Результаты его работы показаны на рисунках 8 и 9.
 
-<p align=center><img src="./Img/Lab3PostmanCheck.png" alt="Postman Check"></p>
+<p align=center><img src="Img/Lab3/Lab3PostmanCheck.png" alt="Postman Check"></p>
 
 <p align = center>Рисунок 7 – Post запрос
 
-<p align=center><img src="./Img/Lab3Signon.png" alt="successfulReg"></p>
+<p align=center><img src="Img/Lab3/Lab3Signon.png" alt="successfulReg"></p>
 
 <p align = center>Рисунок 8 – Удачная регистрация
 
-<p align=center><img src="./Img/Lab3NotSignon.png" alt="unsuccessfulReg"></p>
+<p align=center><img src="Img/Lab3/Lab3NotSignon.png" alt="unsuccessfulReg"></p>
 
 <p align = center>Рисунок 9 – Неудачная регистрация
 
