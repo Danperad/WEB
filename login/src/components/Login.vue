@@ -63,17 +63,17 @@ export default defineComponent({
     check() {
       const headers = {
           'Content-Type': 'application/json',
-          'x-mock-match-request-body': 'true'
       };
-      const url = 'https://c3d2fd9a-8164-40fd-bbeb-aa7519fbf314.mock.pstmn.io/auth/signin';
+      const url = 'api/auth/signin';
       axios.post(url, this.data, {headers})
         .then(
           (res: any) => {
-            alert("Авторизация прошла успешно");
+            if(res.data.IsValid) alert("Авторизация прошла успешно");
+            else alert("Неверный логин или пароль");
           },
         ).catch(
         (err: any) => {
-          alert("Неверный логин или пароль");
+          alert("Сервер недоступен");
         },
       );
     }

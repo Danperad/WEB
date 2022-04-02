@@ -5,15 +5,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent} from 'vue';
 import axios from "axios";
 
-const url = 'http://127.0.0.1:8080/admission/';
+const url = '/vyatsu/admission/';
 
 export default defineComponent({
   name: 'Vyatsu',
-  data(){
-    return{
+  data() {
+    return {
       result: [],
     };
   },
@@ -28,7 +28,7 @@ export default defineComponent({
 </script>
 
 <style>
-.vyatsu-fr{
+.vyatsu-fr {
   width: 100%;
   height: 600px;
 }

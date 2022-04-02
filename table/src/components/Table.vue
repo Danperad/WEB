@@ -1,19 +1,23 @@
 <template>
   <div class="conteiner">
-    <button type="button" v-on:click="GetList">Вывод таблицы</button>
+    <button type="button" v-on:click="getList">Вывод таблицы</button>
     <loader v-if="loading"/>
     <table v-else>
       <tr>
         <th>id</th>
-        <th>ФИО</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
         <th>Возраст</th>
         <th>Почта</th>
       </tr>
-      <tr v-on:click="FindById(item.id)" v-for="(item) in list" :key="item.id">
-        <td>{{ item.id }}</td>
-        <td>{{ item.fio }}</td>
-        <td>{{ item.age }}</td>
-        <td>{{ item.email }}</td>
+      <tr v-on:click="findById(item.ID)" v-for="(item) in list" :key="item.ID">
+        <td>{{ item.ID }}</td>
+        <td>{{ item.LastName }}</td>
+        <td>{{ item.FirstName }}</td>
+        <td>{{ item.MiddleName }}</td>
+        <td>{{ item.Age }}</td>
+        <td>{{ item.EMail }}</td>
       </tr>
     </table>
     <div id="openModal" class="modal">
@@ -21,13 +25,15 @@
         <div class="modal-content">
           <div class="modal-header">
             <h3 class="modal-title">Подробная информация</h3>
-            <a v-on:click="CloseModal" class="close">×</a>
+            <a v-on:click="closeModal" class="close">×</a>
           </div>
           <div class="modal-body">
-            <p>ID: {{ element.id }}</p>
-            <p>ФИО: {{ element.fio }}</p>
-            <p>Возраст: {{ element.age }}</p>
-            <p>Email: {{ element.email }}</p>
+            <p>ID: {{ element.ID }}</p>
+            <p>Фамилия: {{ element.LastName }}</p>
+            <p>Имя: {{ element.FirstName }}</p>
+            <p>Отчество: {{ element.MiddleName }}</p>
+            <p>Возраст: {{ element.Age }}</p>
+            <p>Email: {{ element.EMail }}</p>
           </div>
         </div>
       </div>
@@ -39,7 +45,10 @@
 import {defineComponent} from 'vue';
 import axios from "axios";
 
-const url = 'https://c3d2fd9a-8164-40fd-bbeb-aa7519fbf314.mock.pstmn.io/getuser/';
+const url = 'api/getstud';
+const headers = {
+  'Content-Type': 'application/json',
+};
 
 export default defineComponent({
   name: 'Table',
@@ -49,8 +58,8 @@ export default defineComponent({
     element: {},
   }),
   methods: {
-    GetList() {
-      axios.get(url)
+    getList() {
+      axios.get(url, {headers})
         .then((response) => {
           console.log(response.data);
           this.list = response.data;
@@ -60,9 +69,8 @@ export default defineComponent({
           console.log(error);
         });
     },
-    FindById(i: Number) {
-      console.log(url+i);
-      axios.get(url + i)
+    findById(i: Number) {
+      axios.get(url + '?id=' + i, {headers})
         .then((response) => {
           console.log(response.data);
           this.element = response.data;
@@ -75,7 +83,7 @@ export default defineComponent({
           console.log(error);
         });
     },
-    CloseModal() {
+    closeModal() {
       const modal: HTMLDivElement = document.getElementById('openModal') as HTMLDivElement;
       modal.style.opacity = '0';
       modal.style.pointerEvents = 'none';

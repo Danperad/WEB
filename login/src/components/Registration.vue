@@ -95,9 +95,8 @@ export default defineComponent({
       }
       const headers = {
         'Content-Type': 'application/json',
-        'x-mock-match-request-body': 'true'
       };
-      const url = 'https://c3d2fd9a-8164-40fd-bbeb-aa7519fbf314.mock.pstmn.io/auth/check';
+      const url = 'api/auth/check';
       axios.post(url, this.data, {headers})
         .then(
           (res: any) => {
