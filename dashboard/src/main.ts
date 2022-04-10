@@ -1,3 +1,3 @@
-import Dashboard from "@/components/Dashboard.vue";
+import MainDashboard from "./components/MainDashboard.vue";
 
-export default Dashboard;
+export default MainDashboard;

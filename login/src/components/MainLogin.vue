@@ -1,14 +1,16 @@
 <template>
-  <div class="container">
-    <div>
-      <img v-if="width > 600" src="../assets/big_login.jpg" alt="#" class="big-img">
-      <img v-else src="../assets/small_login.jpg" alt="#" class="small-img">
-    </div>
-    <div>
-      <input type="button" v-on:click="changeLogin" value="Авторизация" id="change-login-btn"
-             class="changeLoginBTN">
-      <Login v-if="login"></Login>
-      <Registration v-if="!login"></Registration>
+  <div>
+    <div class="container">
+      <div>
+        <img v-if="width > 600" src="../assets/big_login.jpg" alt="#" class="big-img">
+        <img v-else src="../assets/small_login.jpg" alt="#" class="small-img">
+      </div>
+      <div>
+        <input type="button" v-on:click="changeLogin" value="Авторизация" id="change-login-btn"
+               class="changeLoginBTN">
+        <Login v-if="login"></Login>
+        <Registration v-if="!login"></Registration>
+      </div>
     </div>
   </div>
 </template>
@@ -91,7 +93,8 @@ export default defineComponent({
   .container {
     display: block;
   }
-  .changeLoginBTN{
+
+  .changeLoginBTN {
     margin: 20px auto 0 auto;
   }
 }
