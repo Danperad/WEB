@@ -1,27 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import {StoreProvider} from "./helpers/store-provider";
-import {TodoList} from "./stores/todo-list";
-
-const todoList = new TodoList([
-    'Сделать 6-ую лабораторную',
-    'Сделать 9-ую лабораторную',
-    'Придумать задание'
-]);
-
-//@ts-ignore - for debugging
-window.todoList = todoList
+import React from "react";
+import ReactDOM from "react-dom";
+import {Provider} from "react-redux";
+import App from "./App";
+import {store} from "./redux/store";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 ReactDOM.render(
-    <StoreProvider value={todoList}>
-        <App/>
-    </StoreProvider>
-    , document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+	<React.StrictMode>
+		<CssBaseline/>
+		<Provider store={store}>
+			<App/>
+		</Provider>
+	</React.StrictMode>,
+	document.getElementById("root")
+);
