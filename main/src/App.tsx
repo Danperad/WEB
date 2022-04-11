@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import Charts from "./components/Chart";
+import Chart from "./components/Chart";
 
 class App extends React.Component {
   render() {
-    return <Charts min={0} max={2.5} delta={0.01}/>;
+    return <Chart min={0.000001} max={2.5} delta={0.001}/>;
   }
 }
 
