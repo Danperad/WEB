@@ -2,7 +2,7 @@
   <div>
     <FioTemplate last-name="Кокорин" first-name="Егор" middle-name="Дмитриевич"
                  group="ИТб-2301"></FioTemplate>
-    <Vyatsu hidden></Vyatsu>
+    <Vyatsu v-if="false"></Vyatsu>
     <MainLogin hidden></MainLogin>
     <Dashboard hidden></Dashboard>
     <Table></Table>

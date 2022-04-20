@@ -5,6 +5,7 @@
     <table v-else>
       <tr>
         <th>id</th>
+        <th>Пол</th>
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Отчество</th>
@@ -13,11 +14,19 @@
       </tr>
       <tr v-on:click="findById(item.ID)" v-for="(item) in list" :key="item.ID">
         <td>{{ item.ID }}</td>
+        <td>
+          <font-awesome-icon v-if="item.Gender === 1" icon="mars"/>
+          <font-awesome-icon v-else icon="venus"/>
+        </td>
         <td>{{ item.LastName }}</td>
         <td>{{ item.FirstName }}</td>
         <td>{{ item.MiddleName }}</td>
         <td>{{ item.Age }}</td>
-        <td>{{ item.EMail }}</td>
+        <td>
+          {{ item.EMail }}
+          <font-awesome-icon class="email-check" v-if="item.IsVerif" icon="check"/>
+          <font-awesome-icon class="email-check" v-else icon="ban"/>
+        </td>
       </tr>
     </table>
     <div id="openModal" class="modal">
@@ -29,11 +38,22 @@
           </div>
           <div class="modal-body">
             <p>ID: {{ element.ID }}</p>
+            <div>
+              <p>Пол:
+                <font-awesome-icon v-if="element.Gender === 1" icon="mars"/>
+                <font-awesome-icon v-else icon="venus"/>
+              </p>
+            </div>
             <p>Фамилия: {{ element.LastName }}</p>
             <p>Имя: {{ element.FirstName }}</p>
             <p>Отчество: {{ element.MiddleName }}</p>
             <p>Возраст: {{ element.Age }}</p>
-            <p>Email: {{ element.EMail }}</p>
+            <div>
+              <p>Email: {{ element.EMail }}
+                <font-awesome-icon class="email-check" v-if="element.IsVerif" icon="check"/>
+                <font-awesome-icon class="email-check" v-else icon="ban"/>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -43,6 +63,9 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {faMars, faVenus, faCheck, faBan} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import axios from "axios";
 
 const url = 'api/getstud';
@@ -50,8 +73,13 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+library.add(faMars, faVenus, faCheck, faBan);
+
 export default defineComponent({
   name: 'Table',
+  components: {
+    FontAwesomeIcon,
+  },
   data: () => ({
     loading: true,
     list: [],
@@ -255,5 +283,8 @@ tr:hover td {
 .modal-body {
   margin-left: 10px;
   text-align: left;
+}
+.email-check{
+  margin-bottom: 2px
 }
 </style>
