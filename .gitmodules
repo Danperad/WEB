@@ -1,0 +1,9 @@
+[submodule "push-notifications"]
+	path = push-notifications
+	url = https://github.com/GoogleChrome/push-notifications.git
+[submodule "webrtc-web"]
+	path = webrtc-web
+	url = https://github.com/googlecodelabs/webrtc-web
+[submodule "codelab-webxr"]
+	path = codelab-webxr
+	url = https://github.com/google-ar/codelab-webxr.git
