@@ -1,5 +1,10 @@
 <template>
   <div class="conteiner">
+    <div>
+      <div v-for="(friend) in friends" :key="friend.id">
+        <p>{{friend.last_name}} {{friend.first_name}}, DoB: {{friend.bdate}}</p>
+      </div>
+    </div>
     <button type="button" v-on:click="getList">Вывод таблицы</button>
     <loader v-if="loading"/>
     <table v-else>
@@ -50,13 +55,32 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+type User = {
+  id: number,
+  first_name: string,
+  last_name: string,
+  bdate: string,
+  city: {id: number, title: string},
+}
+
 export default defineComponent({
   name: 'Table',
   data: () => ({
     loading: true,
     list: [],
     element: {},
+    friends: []
   }),
+  mounted() {
+    if (this.friends.length !== 0) return;
+    axios.get(url +'/friends').then((res) => {
+      const list: [] = res.data
+      console.log(list)
+      this.friends = list
+    }).catch((err) => {
+      console.log(err)
+    })
+  },
   methods: {
     getList() {
       axios.get(url, {headers})

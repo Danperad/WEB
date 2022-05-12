@@ -1,4 +1,5 @@
-﻿using RestPanda.Requests;
+﻿using System.Text.Json;
+using RestPanda.Requests;
 using RestPanda.Requests.Attributes;
 using WebServer.Entity;
 
@@ -7,6 +8,7 @@ namespace WebServer.Requests;
 [RequestHandler("/getstud")]
 public class GetStudHandler
 {
+    private const string Token = "TOKEN";
     [Get]
     public static void GetStuds(PandaRequest request, PandaResponse response)
     {
@@ -43,5 +45,14 @@ public class GetStudHandler
             return;
         }
         response.Send(Stud.Studs.Single(stud => stud.ID == start));
+    }
+
+    [Get("/friends")]
+    public static void GetFriends(PandaRequest request, PandaResponse response)
+    {
+        using var client = new HttpClient();
+        var content = client.GetStringAsync($"https://api.vk.com/method/friends.get?user_ids=134531747&fields=bdate&access_token={Token}&v=5.131");
+        var responsee = JsonSerializer.Deserialize<VkModel>(content.Result);
+        response.Send(responsee!.response.items);
     }
 }
