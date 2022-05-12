@@ -20,7 +20,7 @@ public class Program
     public static void Main(string[] args)
     {
         const string url = "http://localhost:8888/";
-        var server = new PandaServer(url, typeof(Program));
+        var server = new PandaServer(typeof(Program), new Uri(url));
         server.Start();
         Console.WriteLine($"Start Listen at {url}");
         Console.WriteLine("Press Enter to stop server");

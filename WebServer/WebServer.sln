@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServer", "WebServer\WebServer.csproj", "{9F0EAB05-A29B-4FBB-9D8C-E7B6040DD176}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestPanda", "..\..\..\..\MyProject\Rest Panda\Rest Panda\RestPanda\RestPanda.csproj", "{A7861718-66F8-4F82-916D-4D48875EDA6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{9F0EAB05-A29B-4FBB-9D8C-E7B6040DD176}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F0EAB05-A29B-4FBB-9D8C-E7B6040DD176}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F0EAB05-A29B-4FBB-9D8C-E7B6040DD176}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7861718-66F8-4F82-916D-4D48875EDA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7861718-66F8-4F82-916D-4D48875EDA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7861718-66F8-4F82-916D-4D48875EDA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7861718-66F8-4F82-916D-4D48875EDA6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

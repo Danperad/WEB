@@ -1,6 +1,5 @@
 <template>
   <div class="conteiner">
-    <button type="button" v-on:click="getList">Вывод таблицы</button>
     <loader v-if="loading"/>
     <table v-else>
       <tr>
@@ -85,18 +84,13 @@ export default defineComponent({
     list: [],
     element: {},
   }),
+  mounted() {
+
+  },
+  unmounted() {
+
+  },
   methods: {
-    getList() {
-      axios.get(url, {headers})
-        .then((response) => {
-          console.log(response.data);
-          this.list = response.data;
-          this.loading = false;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
     findById(i: Number) {
       axios.get(url + '?id=' + i, {headers})
         .then((response) => {
@@ -284,7 +278,8 @@ tr:hover td {
   margin-left: 10px;
   text-align: left;
 }
-.email-check{
+
+.email-check {
   margin-bottom: 2px
 }
 </style>

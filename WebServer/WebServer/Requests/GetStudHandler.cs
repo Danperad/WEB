@@ -18,6 +18,7 @@ public class GetStudHandler
             response.Send(Stud.Studs);
             return;
         }
+
         var f = request.Params["id"];
         int start;
         if (f.Contains('-'))
@@ -28,6 +29,7 @@ public class GetStudHandler
                 response.Send("Error");
                 return;
             }
+
             response.Send(Stud.Studs.Where(stud => stud.ID >= start && stud.ID <= stop));
             return;
         }
@@ -37,11 +39,27 @@ public class GetStudHandler
             response.Send("Error");
             return;
         }
+
         if (Stud.Studs.All(stud => stud.ID != start))
         {
             response.Send("Error");
             return;
         }
+
         response.Send(Stud.Studs.Single(stud => stud.ID == start));
     }
+
+    [Post("/addStud")]
+    public static void AddStud(PandaRequest request, PandaResponse response)
+    {
+        var stud = request.GetObject<Stud>();
+        if (stud is null)
+        {
+            response.Send(new {Error = "error"});
+            return;
+        }
+        Stud.Studs.Add(stud);
+        response.Send(new {Status = true});
+    }
+    
 }

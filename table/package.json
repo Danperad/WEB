@@ -16,6 +16,7 @@
     "vue": "^3.2.13"
   },
   "devDependencies": {
+    "@types/websocket": "^1.0.5",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
